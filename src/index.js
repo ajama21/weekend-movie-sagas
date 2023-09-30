@@ -33,7 +33,7 @@ function* fetchAllMovies() {
 function* fetchMovieDetails(action) {
     // get all movie details from the DB
     try {
-        const movieDetails = yield axios.get('/api/moviedetail' + action.payload);
+        const movieDetails = yield axios.get('/api/moviedetail/' + action.payload);
         console.log('get movie details:', movieDetails.data);
         yield put({ type: 'SET_MOVIE_DETAILS', payload: movieDetails.data });
 
@@ -56,7 +56,7 @@ const movies = (state = [], action) => {
     }
 }
 
-const movieDetails = (state = null, action) => {
+const movieDetails = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIE_DETAILS':
             return action.payload;
